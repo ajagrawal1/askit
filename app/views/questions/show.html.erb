@@ -1,0 +1,7 @@
+<h1><%= @question.title %></h1>
+<p>Asked by <%= @user.name %> (<%= @user.role %>) 
+  <% if @user.id == current_user.id %>
+  <%= link_to "Edit", edit_question_path(@question) %>
+  <% end %>
+</p>
+<p><%= @question.description %></p>
