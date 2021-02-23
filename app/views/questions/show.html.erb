@@ -5,3 +5,5 @@
   <% end %>
 </p>
 <p><%= @question.description %></p>
+
+<p><%= image_tag(@question.image_url, width: 300) if @question.image.present? %></p>
