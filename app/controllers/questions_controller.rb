@@ -34,6 +34,10 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def user_question
+    @questions = Question.where(user_id: current_user.id)
+  end
+
   private
 
   def question_params

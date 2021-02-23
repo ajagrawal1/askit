@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color:#D4F0FB;" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="/">AskIt</a>
@@ -23,6 +23,11 @@
             <li class="nav-item active">
               <a class="nav-link" href="/questions">Questions</a>
             </li>
+            <% if user_signed_in? %>
+              <li class="nav-item active">
+                <a class="nav-link" href="/user_question">Your-Questions</a>
+              </li>
+            <% end %>
           </ul>
           <p class="navbar-text float-right">
             <% if user_signed_in? %>
