@@ -1,18 +1,38 @@
-<h1><%= @question.title %></h1>
-<p><i>Asked by <%= @user.name %> (<%= @user.role %>) </i>
+<p><h3><strong>Que=> <%= @question.title %></strong></h3>
+  <i>( Asked by <%= @user.name %> (<%= @user.role %>) )</i>
   <% if @user.id == current_user.id %>
   <%= link_to "Edit", edit_question_path(@question) %>
   <% end %>
 </p>
-<p><%= @question.description %></p>
+<p><strong>Desc: </strong><%= @question.description %></p>
 
 <p><%= image_tag(@question.image_url, width: 300) if @question.image.present? %></p>
 
-<h2>Answers</h2>
+<hr>
+<p><strong><i>Comments:</i></strong><br>
+<% @question.comment.each do |comment| %>
+    <% @user = User.find(comment.user_id) %> 
+      <strong><%= @user.name %>:</strong>
+      <%= comment.comment %>
+<% end %>
+<hr>
+</p>
+
+<% if current_user.role == "expert" %>
+<p><h4><strong>Want to add Comment:</strong></h4>
+  <%= form_with model: [ @question, @question.comment.build ] do |form| %>
+      <%= form.text_area :comment %><br>
+      <%= form.submit %>
+    </p>
+  <% end %>
+<% end %>
+
+
+<hr>
+<p><strong><i>Answers:</i></strong><br>
 <% @question.answer.each do |answer| %>
   <% if answer.approve %>
     <% @user = User.find(answer.user_id) %>
-    <p>
       <strong><%= @user.name %>:</strong>
       <%= answer.answer %>
     </p>

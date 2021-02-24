@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, except: [:index]
   before_action :check_user_status, except: [:index]
 
   def index 

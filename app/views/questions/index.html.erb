@@ -1,11 +1,11 @@
-<h3>All Questions can be seen here</h3>
+<br><h3><strong>All Questions can be seen here</strong></h3>
 
-<ul>
+<ol>
   <% @questions.each do |question| %>
       <li>
         <%= link_to question.title, question %>
       </li>
   <% end %>
-</ul>
+</ol>
 
 <%= link_to "Want to Ask a Question?", new_question_path %>
