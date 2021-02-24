@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :check_user_status, except: [:index]
 
   def index 
-    @questions = Question.all
+    @questions = Question.where(approve: "true")
   end
 
   def new

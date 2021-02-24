@@ -1,0 +1,10 @@
+<h3>All Answers by You are:</h3>
+
+<ul>
+  <% @answers.each do |answer| %>
+      <li>
+        <%= answer.answer %>
+        <%= link_to Question.find(answer.question_id).title, question_path(answer.question_id) %>
+      </li>
+  <% end %>
+</ul>
