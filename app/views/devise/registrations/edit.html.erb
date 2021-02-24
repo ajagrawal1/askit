@@ -15,7 +15,7 @@
 
   <div class="field">
     <br /><%= f.label :role %>
-    <%= f.select :role, ['beginner', 'expert'] %>
+    <%= f.text_field :role, :disabled=>true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
