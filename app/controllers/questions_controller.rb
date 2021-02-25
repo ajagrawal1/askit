@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @question = @user.question.create(question_params)
-    redirect_to questions_path
+    redirect_to questions_path, notice: "Your question will be visible once approved by Admin"
   end
 
   def show

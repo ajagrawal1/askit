@@ -11,9 +11,11 @@
 <hr>
 <p><strong><i>Comments:</i></strong><br>
 <% @question.comment.each do |comment| %>
+  <% if comment.approve %>
     <% @user = User.find(comment.user_id) %> 
       <strong><%= @user.name %>:</strong>
-      <%= comment.comment %>
+      <%= comment.comment %><br>
+  <% end %>
 <% end %>
 <hr>
 </p>
@@ -36,6 +38,25 @@
       <strong><%= @user.name %>:</strong>
       <%= answer.answer %>
     </p>
+
+    <hr>
+    <p><strong><i>Comments:</i></strong><br>
+    <% answer.comment.each do |comment| %>
+      <% if comment.approve %>
+        <% @user = User.find(comment.user_id) %> 
+          <strong><%= @user.name %>:</strong>
+          <%= comment.comment %><br>
+      <%end%>
+    <% end %>
+
+    <% if current_user.role == "expert" %>
+      <p><h4><strong>Want to add Comment:</strong></h4>
+        <%= form_with model: [ @question, answer, answer.comment.build ] do |form| %>
+            <%= form.text_area :comment %><br>
+            <%= form.submit %>
+          </p>
+        <% end %>
+    <% end %>
   <% end %>
 <% end %>
 

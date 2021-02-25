@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+      @commentable = Question.find(params[:question_id])
       redirect_to @commentable, notice: "Comment created and will be displayed when approved by Admin."
     else
       render :new
