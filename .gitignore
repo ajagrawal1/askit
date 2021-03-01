@@ -42,3 +42,6 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+#ignore env file containing environmental variables
+/.env

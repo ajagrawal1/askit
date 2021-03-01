@@ -1,0 +1,18 @@
+<% @question.comment.each do |comment| %>
+    <% if comment.approve %>
+      <% @user = User.find(comment.user_id) %> 
+        <strong><%= @user.name %>:</strong>
+        <%= comment.comment %><br>
+    <% end %>
+  <% end %>
+  <hr>
+  </p>
+
+  <% if current_user.role == "expert" %>
+  <p><h4><strong>Want to add Comment:</strong></h4>
+    <%= form_with model: [ @question, @question.comment.build ] do |form| %>
+        <%= form.text_area :comment %><br>
+        <%= form.submit %>
+      </p>
+    <% end %>
+  <% end %>

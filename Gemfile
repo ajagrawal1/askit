@@ -28,6 +28,8 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 # active admin for admin panel
 gem 'activeadmin'
+# Loads environment variables from `.env`. 
+gem 'dotenv-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

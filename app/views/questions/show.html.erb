@@ -1,5 +1,4 @@
-<p><h3><strong>Que=> <%= @question.title %></strong></h3>
-  <i>( Asked by <%= @user.name %> (<%= @user.role %>) )</i>
+<p><h3><strong>Que=> <%= @question.title %></strong><i> ( Asked by <%= @user.name %> (<%= @user.role %>) )</i></h3>
   <% if @user.id == current_user.id %>
   <%= link_to "Edit", edit_question_path(@question) %>
   <% end %>
@@ -11,24 +10,7 @@
 <div class="col-md-4">
   <hr>
   <p><strong><i>Comments:</i></strong><br>
-  <% @question.comment.each do |comment| %>
-    <% if comment.approve %>
-      <% @user = User.find(comment.user_id) %> 
-        <strong><%= @user.name %>:</strong>
-        <%= comment.comment %><br>
-    <% end %>
-  <% end %>
-  <hr>
-  </p>
-
-  <% if current_user.role == "expert" %>
-  <p><h4><strong>Want to add Comment:</strong></h4>
-    <%= form_with model: [ @question, @question.comment.build ] do |form| %>
-        <%= form.text_area :comment %><br>
-        <%= form.submit %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= render 'comments/question_comment' %>
 </div>
 
 <hr>
