@@ -1,18 +1,22 @@
 ActiveAdmin.register Answer do
+  menu priority: 5
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
   permit_params :answer, :question_id, :user_id, :approve
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:answer, :question_id, :user_id, :approve]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+ 
+  # customizing the main display 
+  index do 
+    selectable_column
+    column :answer
+    column :question
+    column :user
+    column :approve
+    actions
+  end
+
+  # customizing the filters 
+  filter :question,:as => :select
+  filter :user,:as => :select
+  filter :answer
+  filter :approve
+
 end

@@ -8,27 +8,28 @@
 
 <p><%= image_tag(@question.image_url, width: 300) if @question.image.present? %></p>
 
-<hr>
-<p><strong><i>Comments:</i></strong><br>
-<% @question.comment.each do |comment| %>
-  <% if comment.approve %>
-    <% @user = User.find(comment.user_id) %> 
-      <strong><%= @user.name %>:</strong>
-      <%= comment.comment %><br>
+<div class="col-md-4">
+  <hr>
+  <p><strong><i>Comments:</i></strong><br>
+  <% @question.comment.each do |comment| %>
+    <% if comment.approve %>
+      <% @user = User.find(comment.user_id) %> 
+        <strong><%= @user.name %>:</strong>
+        <%= comment.comment %><br>
+    <% end %>
   <% end %>
-<% end %>
-<hr>
-</p>
+  <hr>
+  </p>
 
-<% if current_user.role == "expert" %>
-<p><h4><strong>Want to add Comment:</strong></h4>
-  <%= form_with model: [ @question, @question.comment.build ] do |form| %>
-      <%= form.text_area :comment %><br>
-      <%= form.submit %>
-    </p>
+  <% if current_user.role == "expert" %>
+  <p><h4><strong>Want to add Comment:</strong></h4>
+    <%= form_with model: [ @question, @question.comment.build ] do |form| %>
+        <%= form.text_area :comment %><br>
+        <%= form.submit %>
+      </p>
+    <% end %>
   <% end %>
-<% end %>
-
+</div>
 
 <hr>
 <p><strong><i>Answers:</i></strong><br>
@@ -39,24 +40,27 @@
       <%= answer.answer %>
     </p>
 
-    <hr>
-    <p><strong><i>Comments:</i></strong><br>
-    <% answer.comment.each do |comment| %>
-      <% if comment.approve %>
-        <% @user = User.find(comment.user_id) %> 
-          <strong><%= @user.name %>:</strong>
-          <%= comment.comment %><br>
-      <%end%>
-    <% end %>
+    <div class="col-md-4">
+      <hr>
+      <p><strong><i>Comments:</i></strong><br>
+      <% answer.comment.each do |comment| %>
+        <% if comment.approve %>
+          <% @user = User.find(comment.user_id) %> 
+            <strong><%= @user.name %>:</strong>
+            <%= comment.comment %><br>
+        <%end%>
+      <% end %>
+      <hr>
 
-    <% if current_user.role == "expert" %>
-      <p><h4><strong>Want to add Comment:</strong></h4>
-        <%= form_with model: [ @question, answer, answer.comment.build ] do |form| %>
-            <%= form.text_area :comment %><br>
-            <%= form.submit %>
-          </p>
-        <% end %>
-    <% end %>
+      <% if current_user.role == "expert" %>
+        <p><h4><strong>Want to add Comment:</strong></h4>
+          <%= form_with model: [ @question, answer, answer.comment.build ] do |form| %>
+              <%= form.text_area :comment %><br>
+              <%= form.submit %>
+            </p>
+          <% end %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 
