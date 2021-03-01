@@ -13,7 +13,7 @@ ActiveAdmin.register Question do
   end
 
   # customizing the filters 
-  filter :user_id
+  filter :user
   filter :title
   filter :approve
 
@@ -22,13 +22,13 @@ ActiveAdmin.register Question do
     attributes_table do
       row :title
       row :description
-      row :approve
       row :user
       row :created_at
       row :updated_at
       row :image do |question|
         image_tag question.image.url if question.image?
       end
+      row :approve
     end
   end
 
