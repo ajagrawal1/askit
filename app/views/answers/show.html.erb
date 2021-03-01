@@ -2,9 +2,16 @@
 
 <ol>
   <% @answers.each do |answer| %>
+    <% if answer.approve %>
       <li>
         <%= answer.answer %>
-        <%= link_to Question.find(answer.question_id).title, question_path(answer.question_id) %>
+        ( Q.<%= link_to Question.find(answer.question_id).title, question_path(answer.question_id) %> ) { approved }
       </li>
+    <% else %>
+      <li>
+        <%= answer.answer %>
+        ( Q.<%= link_to Question.find(answer.question_id).title, question_path(answer.question_id) %> ) { approval-pending }
+      </li>
+    <% end %>
   <% end %>
 </ol>

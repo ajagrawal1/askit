@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :load_commentable
 
   def index
-   @comments = @commentable.comment
+   @comments = Comment.where(user_id: current_user.id)
   end
     
   def new

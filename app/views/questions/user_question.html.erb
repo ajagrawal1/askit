@@ -2,9 +2,15 @@
 
 <ol>
   <% @questions.each do |question| %>
+    <% if question.approve %>
       <li>
-        <%= link_to question.title, question %>
+        <%= link_to question.title, question %> { approved }
       </li>
+    <% else %>
+      <li>
+        <%= link_to question.title, question %> { approval-pending }
+      </li>
+    <% end %>
   <% end %>
 </ol>
 

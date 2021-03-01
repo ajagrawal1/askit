@@ -1,0 +1,15 @@
+<br><h3><strong>All Comments by You are:</strong></h3>
+
+<ol>
+  <% @comments.each do |comment| %>
+    <% if comment.approve %> 
+      <li>
+        <%= comment.comment %> { approved }
+      </li>
+    <% else %>
+      <li>
+        <%= comment.comment %> { approval-pending }
+      </li>
+    <% end %>
+  <% end %>
+</ol>

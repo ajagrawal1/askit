@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments, only: [:index]
+
   get '/user_question', to: 'questions#user_question'
   get '/user_answer', to: 'answers#show'
 
