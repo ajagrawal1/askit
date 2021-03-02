@@ -3,4 +3,6 @@ class Question < ApplicationRecord
   has_many :answer
   has_many :comment, :as => :commentable
   mount_uploader :image, ImageUploader
+
+  validates :image, file_size: { less_than: 1.megabytes }
 end

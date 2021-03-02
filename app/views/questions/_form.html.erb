@@ -1,4 +1,6 @@
 <%= form_with model: question do |form| %>
+<%= render 'shared/errors', object: question %>
+
   <br>
   <div class="form-group row" >
     <div class="col-2">
@@ -25,7 +27,9 @@
     <div class="col-10">
       <%= form.file_field :image %><br>
     </div>
+    <i> (image size must be less than 1 Mb)</i>
   </div>
+  
   <br>
 
   <div>

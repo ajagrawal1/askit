@@ -17,26 +17,25 @@
 </div>
 <hr>
 
-<h3><strong><i>Answers:</i></strong></h3><br>
+<h3><strong><i><%= @question.answer.count %> Answers</i></strong></h3><hr>
 <div id="content">
   <% @question.answer.each do |answer| %>
     <% if answer.approve %>
       <% @user = User.find(answer.user_id) %>
-      <hr>
       <%= answer.answer %> --<i>answered on <%= answer.created_at.strftime("%B %d,%Y at %k:%M") %> by <strong><%= @user.name %></strong> </i>
 
       <div class="col-md-10">
         <hr>
-        <p><strong><i>Comments:</i></strong><br>
         <%= render partial:'comments/answer_comment', :locals => { :answer => answer } %>
       </div>
+      <hr>
     <% end %>
   <% end %>
 </div>
 <hr>
 <div id="static">
   <% if current_user.role == "expert" %>
-    <h2>Want to Answer:</h2>
+    <h2>Your Answer:</h2>
     <%= render 'answers/form' %>
   <% end %>
 </div>
