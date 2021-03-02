@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answers = Answer.where(user_id: current_user.id)
+    @answers = Answer.where(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
 
   private

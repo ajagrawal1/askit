@@ -29,5 +29,7 @@
   <% end %>
 </ol>
 
+<%= will_paginate @questions, previous_label: h("<"), next_label: h(">")%>
+
 <hr>
 <h3><%= link_to "Want to Ask a Question?", new_question_path %></h3>

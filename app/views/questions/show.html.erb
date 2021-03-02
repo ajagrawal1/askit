@@ -1,37 +1,44 @@
-<p><h3><strong>Que=> <%= @question.title %></strong><i> ( Asked by <%= @user.name %> (<%= @user.role %>) )</i></h3>
-  <% if @user.id == current_user.id %>
-  <%= link_to "Edit", edit_question_path(@question) %>
+<div id="static">
+  <p><h3><strong>Que=> <%= @question.title %></strong><i> ( Asked by <%= @user.name %> (<%= @user.role %>) )</i></h3>
+    <% if @user.id == current_user.id %>
+    <%= link_to "Edit", edit_question_path(@question) %>
+    <% end %>
+  </p>
+  <p><strong>Desc: </strong><%= @question.description %></p>
+
+  <p><%= image_tag(@question.image_url, width: 300) if @question.image.present? %></p>
+
+
+  <div class="col-md-4">
+    <hr>
+    <p><strong><i>Comments:</i></strong><br>
+    <%= render 'comments/question_comment' %>
+  </div>
+</div>
+<hr>
+
+<h3><strong><i>Answers:</i></strong></h3><br>
+<div id="content">
+  <p><% @question.answer.each do |answer| %>
+    <% if answer.approve %>
+      <% @user = User.find(answer.user_id) %>
+        <strong><%= @user.name %>:</strong>
+        <%= answer.answer %>
+      </p>
+
+      <div class="col-md-4">
+        <hr>
+        <p><strong><i>Comments:</i></strong><br>
+        <%= render partial:'comments/answer_comment', :locals => { :answer => answer } %>
+      </div>
+      <hr>
+    <% end %>
   <% end %>
-</p>
-<p><strong>Desc: </strong><%= @question.description %></p>
-
-<p><%= image_tag(@question.image_url, width: 300) if @question.image.present? %></p>
-
-<div class="col-md-4">
-  <hr>
-  <p><strong><i>Comments:</i></strong><br>
-  <%= render 'comments/question_comment' %>
 </div>
 
-<hr>
-<p><strong><i>Answers:</i></strong><br>
-<% @question.answer.each do |answer| %>
-  <% if answer.approve %>
-    <% @user = User.find(answer.user_id) %>
-      <strong><%= @user.name %>:</strong>
-      <%= answer.answer %>
-    </p>
-
-    <div class="col-md-4">
-      <hr>
-      <p><strong><i>Comments:</i></strong><br>
-      <%= render partial:'comments/answer_comment', :locals => { :answer => answer } %>
-    </div>
-    <hr>
+<div id="static">
+  <% if current_user.role == "expert" %>
+    <h2>Want to Answer:</h2>
+    <%= render 'answers/form' %>
   <% end %>
-<% end %>
-
-<% if current_user.role == "expert" %>
-  <h2>Want to Answer:</h2>
-  <%= render 'answers/form' %>
-<% end %>
+</div>

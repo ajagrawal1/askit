@@ -30,7 +30,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'activeadmin'
 # Loads environment variables from `.env`. 
 gem 'dotenv-rails'
-
+# to add page navigation for the content
+gem 'will_paginate', '~> 3.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -30,3 +30,6 @@
       </li>
   <% end %>
 </ol>
+
+<hr>
+<%= will_paginate @comments, previous_label: h("<"), next_label: h(">")%>

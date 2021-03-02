@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :check_user_status, except: [:index]
 
   def index 
-    @questions = Question.where(approve: "true")
+    @questions = Question.where(approve: "true").paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def user_question
-    @questions = Question.where(user_id: current_user.id)
+    @questions = Question.where(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
 
   private

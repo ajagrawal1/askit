@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :load_commentable
 
   def index
-   @comments = Comment.where(user_id: current_user.id)
+   @comments = Comment.where(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
     
   def new
