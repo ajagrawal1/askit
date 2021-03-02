@@ -9,9 +9,13 @@
 <hr>
 
 <% if current_user.role == "expert" %>
-  <p><h4><strong>Want to add Comment:</strong></h4>
-  <%= form_with model: [ @question, answer, answer.comment.build ] do |form| %>
-    <%= form.text_area :comment %><br>
-    <%= form.submit %>
-  <% end %></p>
+  <div onclick="show(<%=answer.id%>)">Want to add Comment?</div>
+  <div id = <%=answer.id%> style="display:none;" >
+    <p><h4><strong>Your Comment:</strong></h4>
+    <%= form_with model: [ @question, answer, answer.comment.build ] do |form| %>
+      <%= form.text_area :comment %><br>
+      <%= form.submit %>
+    <% end %></p>
+  </div>
 <% end %>
+
