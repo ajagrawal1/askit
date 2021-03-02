@@ -1,5 +1,6 @@
 <div id="static">
   <br><h3><strong><%= @question.title %></strong> <%= link_to "Edit", edit_question_path(@question) if @user.id == current_user.id %></h3>
+  <i>Asked</i> <%= TimeDifference.between(Time.now, @question.created_at).humanize%> ago
   <hr>
   <p><strong>Desc: </strong><%= @question.description %></p>
 

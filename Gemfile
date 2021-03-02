@@ -34,6 +34,8 @@ gem 'dotenv-rails'
 gem 'will_paginate', '~> 3.3'
 # gem to add file validations 
 gem 'file_validators'
+# gem for timedifference
+gem 'time_difference'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
