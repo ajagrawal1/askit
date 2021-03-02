@@ -1,3 +1,4 @@
+<div class="formwrapper">
 <div class="container" style="width:50%;">
   <br><h2><strong>Sign up</strong></h2>
 
@@ -57,11 +58,13 @@
       </div>
     </div>
 
-    <div class="actions">
-      <br /><%= f.submit "Sign up" %>
-    </div>
+    <div class="actions row ">
+      <div class="col-2">
+        <%= f.submit "Sign up" %>
+      </div>
   <% end %>
-  <div style="text-align:left">
+
     <br /><%= render "devise/shared/links" %>
   </div>
+</div>
 </div>

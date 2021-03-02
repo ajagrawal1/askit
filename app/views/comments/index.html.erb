@@ -1,15 +1,32 @@
 <br><h3><strong>All Comments by You are:</strong></h3>
-
+<hr>
+<div class="row">
+  <div class="col-6"><strong> Comments </strong></div>
+  <div class="col-2"><strong> Status </strong></div>
+  <div class="col-2"><strong> Commented at </strong></div>
+  <div class="col-2"><strong> Commented on </strong></div>
+</div>
+<hr>
 <ol>
   <% @comments.each do |comment| %>
-    <% if comment.approve %> 
       <li>
-        <%= comment.comment %> { approved }
+        <div class="row">
+          <div class="col-6">
+            <h4><%= comment.comment %></h4>
+          </div>
+          <div class="col-2">
+            <% if comment.approve %>
+              Approved
+            <% else %>
+              Not-Approved
+            <% end %>
+          </div>
+          <div class="col-2">
+            <%= comment.created_at %>
+          </div>
+          <div class="col-2">
+            <%= comment.commentable_type %>
+          </div>
       </li>
-    <% else %>
-      <li>
-        <%= comment.comment %> { approval-pending }
-      </li>
-    <% end %>
   <% end %>
 </ol>

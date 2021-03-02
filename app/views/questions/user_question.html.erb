@@ -1,17 +1,33 @@
 <br><h3><strong>All Questions asked by You are:</strong></h3>
+<hr>
+<div class="row">
+  <div class="col-6"><strong> Questions </strong></div>
+  <div class="col-3"><strong> Status </strong></div>
+  <div class="col-3"><strong> Asked-on </strong></div>
+</div>
+<hr>
 
 <ol>
   <% @questions.each do |question| %>
-    <% if question.approve %>
-      <li>
-        <%= link_to question.title, question %> { approved }
-      </li>
-    <% else %>
-      <li>
-        <%= link_to question.title, question %> { approval-pending }
-      </li>
-    <% end %>
+    <li>
+      <div class="row">
+        <div class="col-6">
+          <h4><%= link_to question.title, question %></h4>
+        </div>
+        <div class="col-3">
+          <% if question.approve %>
+            Approved
+          <% else %>
+            Not-Approved
+          <% end %>
+        </div>
+        <div class="col-3">
+          <%= question.created_at %>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ol>
 
-<%= link_to "Want to Ask a Question?", new_question_path %>
+<hr>
+<h3><%= link_to "Want to Ask a Question?", new_question_path %></h3>

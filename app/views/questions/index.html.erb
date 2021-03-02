@@ -1,11 +1,33 @@
 <br><h3><strong>All Questions can be seen here</strong></h3>
+<hr>
+<div class="row">
+  <div class="col-5"><strong> Questions </strong></div>
+  <div class="col-2"><strong> Answers </strong></div>
+  <div class="col-2"><strong> Comments </strong></div>
+  <div class="col-3"><strong> Asked-on </strong></div>
+</div>
+<hr>
 
 <ol>
   <% @questions.each do |question| %>
       <li>
-        <%= link_to question.title, question %>
+      <div class="row">
+        <div class="col-5">
+          <h4><%= link_to question.title, question %></h4>
+        </div>
+        <div class="col-2">
+          <h4><%= question.answer.count %></h4>
+        </div>
+        <div class="col-2">
+          <%= question.comment.count %>
+        </div>
+        <div class="col-3">
+          <%= question.created_at %>
+        </div>
+      </div>
       </li>
   <% end %>
 </ol>
 
-<%= link_to "Want to Ask a Question?", new_question_path %>
+<hr>
+<h3><%= link_to "Want to Ask a Question?", new_question_path %></h3>
