@@ -1,12 +1,12 @@
-<% @question.comment.each do |comment| %>
+<ol>
+  <% @question.comment.each do |comment| %>
     <% if comment.approve %>
       <% @user = User.find(comment.user_id) %> 
-        <strong><%= @user.name %>:</strong>
-        <%= comment.comment %><br>
+        <li><%= comment.comment %> --<i>on <%= comment.created_at.strftime("%B %d,%Y at %k:%M") %> by <strong><%= @user.name %></strong> </i></li>
     <% end %>
   <% end %>
-  <hr>
-  </p>
+</ol>
+<hr>
 
   <% if current_user.role == "expert" %>
   <p><h4><strong>Want to add Comment:</strong></h4>

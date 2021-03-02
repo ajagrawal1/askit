@@ -22,7 +22,7 @@
           <% end %>
         </div>
         <div class="col-3">
-          <%= question.created_at %>
+          <%= question.created_at.strftime("%B %d,%Y at %k:%M") %>
         </div>
       </div>
     </li>

@@ -26,7 +26,7 @@
              Q.<%= link_to Question.find(answer.question_id).title, question_path(answer.question_id) %>
           </div>
           <div class="col-2">
-            <%= answer.created_at %>
+            <%= answer.created_at.strftime("%B %d,%Y at %k:%M") %>
           </div>
         </div>
       </li>

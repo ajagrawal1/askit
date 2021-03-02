@@ -4,7 +4,7 @@
   <div class="col-6"><strong> Comments </strong></div>
   <div class="col-2"><strong> Status </strong></div>
   <div class="col-2"><strong> Commented at </strong></div>
-  <div class="col-2"><strong> Commented on </strong></div>
+  <div class="col-2"><strong> Comment type </strong></div>
 </div>
 <hr>
 <ol>
@@ -22,7 +22,7 @@
             <% end %>
           </div>
           <div class="col-2">
-            <%= comment.created_at %>
+            <%= comment.created_at.strftime("%B %d,%Y at %k:%M") %>
           </div>
           <div class="col-2">
             <%= comment.commentable_type %>
